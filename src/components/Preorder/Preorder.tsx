@@ -430,7 +430,7 @@ const Preorder: React.FC = () => {
     setErrorMessage(null);
     
     try {
-      const response = await fetch('http://localhost:4000/api/preorder', {
+      const response = await fetch('https://shadowgear-website.onrender.com/api/preorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
