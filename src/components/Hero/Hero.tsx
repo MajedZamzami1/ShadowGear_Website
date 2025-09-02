@@ -1,70 +1,116 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import Logo from '../Logo';
 
 const HeroSection = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, ${theme.colors.background.primary} 0%, ${theme.colors.background.secondary} 100%);
+  background: url('/images/hero-background.png') no-repeat center center;
+  background-size: cover;
   position: relative;
   overflow: hidden;
   
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.5;
+    width: 1920px;
+    height: 2352px;
+    left: calc(50% - 1920px/2);
+    top: -605px;
+    background: rgba(198, 24, 27, 0.1);
+    opacity: 0.3;
   }
 `;
 
 const HeroContent = styled.div`
-  text-align: center;
-  max-width: 800px;
-  padding: ${theme.spacing[8]};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
   position: relative;
   z-index: 2;
+  padding-top: 5vh;
 `;
 
-const HeroTitle = styled.h1`
-  font-size: ${theme.typography.fontSize['5xl']};
-  font-weight: ${theme.typography.fontWeight.black};
-  color: #FFEFEF;
-  margin-bottom: ${theme.spacing[6]};
-  line-height: 1.1;
-  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+const HeroLogo = styled.div`
+  margin-bottom: ${theme.spacing[8]};
+  display: flex;
+  justify-content: center;
+  
+  > * {
+    transform: scale(1.5);
+    
+    @media (min-width: ${theme.breakpoints.md}) {
+      transform: scale(2);
+    }
+  }
+`;
+
+const PunchingBag = styled.div`
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 600px;
+  z-index: 1;
   
   @media (min-width: ${theme.breakpoints.md}) {
-    font-size: ${theme.typography.fontSize['7xl']};
+    width: 400px;
+    height: 800px;
   }
   
   @media (min-width: ${theme.breakpoints.lg}) {
-    font-size: ${theme.typography.fontSize['8xl']};
+    width: 500px;
+    height: 1000px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 
-const HeroSubtitle = styled.p`
-  font-size: ${theme.typography.fontSize['xl']};
-  color: ${theme.colors.text.secondary};
+const HeroTitle = styled.h1`
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: ${theme.typography.fontWeight.black};
+  color: #FFEFEF;
+  text-shadow: 0 0 40px #ff0000;
+  line-height: 0.9;
   margin-bottom: ${theme.spacing[8]};
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  white-space: pre-line;
+`;
+
+const HeroSubtitle = styled.p`
+  font-size: ${theme.typography.fontSize['2xl']};
+  font-weight: ${theme.typography.fontWeight.bold};
+  color: ${theme.colors.white};
+  margin-bottom: ${theme.spacing[8]};
+  line-height: 1.4;
+  position: relative;
+  z-index: 3;
+  text-align: center;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6;
   
   @media (min-width: ${theme.breakpoints.md}) {
-    font-size: ${theme.typography.fontSize['2xl']};
+    font-size: ${theme.typography.fontSize['3xl']};
   }
 `;
 
 const CTAButton = styled.button`
-  background: linear-gradient(135deg, ${theme.colors.accent} 0%, ${theme.colors.accentHover} 100%);
-  color: ${theme.colors.black};
+  background: linear-gradient(135deg, #ff0000 0%, #ff3333 100%);
+  color: ${theme.colors.white};
   border: none;
   padding: ${theme.spacing[4]} ${theme.spacing[8]};
   font-size: ${theme.typography.fontSize['lg']};
@@ -72,11 +118,14 @@ const CTAButton = styled.button`
   border-radius: ${theme.borderRadius.lg};
   cursor: pointer;
   transition: all ${theme.transitions.base};
-  box-shadow: ${theme.shadows.glow};
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  position: relative;
+  z-index: 3;
+  margin-top: ${theme.spacing[16]};
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: ${theme.shadows['2xl']}, ${theme.shadows.glow};
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
   }
   
   &:active {
@@ -119,13 +168,17 @@ const ScrollIndicator = styled.div`
 const Hero: React.FC = () => {
   return (
     <HeroSection id="home">
+      <PunchingBag>
+        <img src="/images/punching-bag.png" alt="ShadowGear Smart Punching Bag" />
+      </PunchingBag>
       <HeroContent>
         <HeroTitle>
-          ShadowGear
+          Shadow<br />
+          Gear
         </HeroTitle>
         <HeroSubtitle>
-          Unleash Your Power<br />
-          Train Smarter Play Harder.
+          Precision Lights, Powerful<br />
+          Sensors, Smarter You
         </HeroSubtitle>
         <CTAButton onClick={() => document.getElementById('preorder')?.scrollIntoView({ behavior: 'smooth' })}>
           Pre order Now

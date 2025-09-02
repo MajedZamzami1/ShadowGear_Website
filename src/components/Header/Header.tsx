@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import Logo from '../Logo';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -8,9 +9,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
   transition: all ${theme.transitions.base};
 `;
 
@@ -23,6 +22,7 @@ const Nav = styled.nav`
   margin: 0 auto;
   padding-left: ${theme.spacing[4]};
   padding-right: ${theme.spacing[4]};
+  width: 100%;
   
   @media (min-width: ${theme.breakpoints.md}) {
     padding-left: ${theme.spacing[8]};
@@ -30,12 +30,7 @@ const Nav = styled.nav`
   }
 `;
 
-const Logo = styled.div`
-  font-size: ${theme.typography.fontSize['2xl']};
-  font-weight: ${theme.typography.fontWeight.bold};
-  color: ${theme.colors.accent};
-  font-family: ${theme.typography.fontFamily.mono};
-`;
+
 
 const NavLinks = styled.ul<{ isOpen: boolean }>`
   display: flex;
@@ -114,7 +109,7 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Nav>
-        <Logo>ShadowGear</Logo>
+        <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         
         <NavLinks isOpen={isMenuOpen}>
           <NavLink><a href="#home">Home</a></NavLink>

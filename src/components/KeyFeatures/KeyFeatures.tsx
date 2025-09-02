@@ -3,18 +3,57 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 const KeyFeaturesSection = styled.section`
-  background: ${theme.colors.background.secondary};
+  background: #000000;
   padding: ${theme.spacing[20]} 0;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 306px;
+    height: 306px;
+    left: -153px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #C6181B;
+    filter: blur(250px);
+  }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 ${theme.spacing[4]};
+  padding: 0 ${theme.spacing[2]};
+  position: relative;
+  z-index: 2;
   
   @media (min-width: ${theme.breakpoints.md}) {
-    padding: 0 ${theme.spacing[8]};
+    padding: 0 ${theme.spacing[4]};
   }
+`;
+
+const HeaderSection = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${theme.spacing[12]};
+  margin-bottom: ${theme.spacing[16]};
+  
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: ${theme.spacing[8]};
+  }
+`;
+
+const LeftColumn = styled.div`
+  flex: 1;
+`;
+
+const RightColumn = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: ${theme.spacing[20]};
 `;
 
 const SectionTag = styled.div`
@@ -31,8 +70,9 @@ const SectionTag = styled.div`
 const SectionTitle = styled.h2`
   font-size: ${theme.typography.fontSize['4xl']};
   font-weight: ${theme.typography.fontWeight.bold};
-  color: ${theme.colors.text.primary};
-  margin-bottom: ${theme.spacing[4]};
+  color: ${theme.colors.white};
+  margin-bottom: 0;
+  line-height: 1.2;
   
   @media (min-width: ${theme.breakpoints.md}) {
     font-size: ${theme.typography.fontSize['5xl']};
@@ -41,9 +81,9 @@ const SectionTitle = styled.h2`
 
 const SectionDescription = styled.p`
   font-size: ${theme.typography.fontSize.lg};
-  color: ${theme.colors.text.secondary};
-  margin-bottom: ${theme.spacing[12]};
-  max-width: 600px;
+  color: ${theme.colors.white};
+  margin-bottom: 0;
+  max-width: 500px;
   line-height: 1.6;
 `;
 
@@ -58,7 +98,7 @@ const FeaturesGrid = styled.div`
 `;
 
 const FeatureCard = styled.div`
-  background: ${theme.colors.background.tertiary};
+  background: #000000;
   border: 1px solid #515151;
   border-radius: ${theme.borderRadius['3xl']};
   padding: ${theme.spacing[10]};
@@ -72,7 +112,7 @@ const FeatureCard = styled.div`
 `;
 
 const FeatureNumber = styled.div`
-  font-size: ${theme.typography.fontSize['6xl']};
+  font-size: ${theme.typography.fontSize['4xl']};
   font-weight: ${theme.typography.fontWeight.black};
   color: ${theme.colors.accent};
   margin-bottom: ${theme.spacing[4]};
@@ -81,31 +121,32 @@ const FeatureNumber = styled.div`
 const FeatureTitle = styled.h3`
   font-size: ${theme.typography.fontSize['xl']};
   font-weight: ${theme.typography.fontWeight.bold};
-  color: ${theme.colors.text.primary};
+  color: ${theme.colors.white};
   margin-bottom: ${theme.spacing[3]};
 `;
 
 const FeatureDescription = styled.p`
   font-size: ${theme.typography.fontSize.base};
-  color: ${theme.colors.text.secondary};
+  color: ${theme.colors.white};
   line-height: 1.6;
+  opacity: 0.8;
 `;
 
 const features = [
   {
-    number: '01',
+    number: '.01',
     title: 'LED Target System',
-    description: 'Train with precision using guided light patterns that adapt to your skill level.'
+    description: 'Train with precision using guided light patterns.'
   },
   {
-    number: '02',
+    number: '.02',
     title: 'Smart Sensors',
-    description: 'Real-time tracking of speed, power & punch variety with advanced analytics.'
+    description: 'Real-time tracking of speed, power & punch variety.'
   },
   {
-    number: '03',
+    number: '.03',
     title: 'Leaderboards',
-    description: 'Compete, climb ranks & stay motivated with global and local leaderboards.'
+    description: 'Compete, climb ranks & stay motivated.'
   }
 ];
 
@@ -113,13 +154,19 @@ const KeyFeatures: React.FC = () => {
   return (
     <KeyFeaturesSection id="key-features">
       <Container>
-        <SectionTag>Key Features</SectionTag>
-        <SectionTitle>
-          Power Meets Precision: ShadowGear's Smart Features
-        </SectionTitle>
-        <SectionDescription>
-          From guided punches to real-time tracking, every detail is built to make your training more engaging, competitive, and effective.
-        </SectionDescription>
+        <HeaderSection>
+          <LeftColumn>
+            <SectionTag>Key Features</SectionTag>
+            <SectionTitle>
+              Power Meets Precision: ShadowGear's Smart Features
+            </SectionTitle>
+          </LeftColumn>
+          <RightColumn>
+            <SectionDescription>
+              From guided punches to real-time tracking, every detail is built to make your training more engaging, competitive, and effective.
+            </SectionDescription>
+          </RightColumn>
+        </HeaderSection>
         <FeaturesGrid>
           {features.map((feature, index) => (
             <FeatureCard key={index}>

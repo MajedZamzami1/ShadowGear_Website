@@ -7,7 +7,6 @@ import Header from './components/Header';
 import HowItWorks from './components/HowItWorks';
 import KeyFeatures from './components/KeyFeatures';
 import Preorder from './components/Preorder';
-import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
       <HowItWorks />
       <KeyFeatures />
       <Preorder />
-      <Footer />
     </ThemeProvider>
   );
 }

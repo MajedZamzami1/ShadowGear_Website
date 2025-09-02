@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import Logo from '../Logo';
 
 const FooterContainer = styled.footer`
   background: ${theme.colors.background.primary};
@@ -15,6 +16,15 @@ const Container = styled.div`
   
   @media (min-width: ${theme.breakpoints.md}) {
     padding: 0 ${theme.spacing[8]};
+  }
+`;
+
+const FooterLogo = styled.div`
+  text-align: center;
+  margin-bottom: ${theme.spacing[8]};
+  
+  > * {
+    transform: scale(1.2);
   }
 `;
 
@@ -88,6 +98,9 @@ const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <Container>
+        <FooterLogo>
+          <Logo />
+        </FooterLogo>
         <FooterContent>
           <FooterSection>
             <h3>ShadowGear</h3>

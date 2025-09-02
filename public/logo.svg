@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <!-- Teardrop Icon -->
+  <path d="M8 8C8 3.58172 11.5817 0 16 0C20.4183 0 24 3.58172 24 8C24 12.4183 20.4183 16 16 16C11.5817 16 8 12.4183 8 8Z" fill="white"/>
+  <circle cx="18" cy="10" r="2" fill="black"/>
+  
+  <!-- ShadowGear Text -->
+  <text x="32" y="12" font-family="monospace" font-size="12" font-weight="bold" fill="white">SHADOWGEAR</text>
+</svg>
