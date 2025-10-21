@@ -4,20 +4,33 @@ import { theme } from '../../styles/theme';
 
 const PreorderSection = styled.section`
   background: #000000;
-  padding: ${theme.spacing[20]} 0;
+  padding: ${theme.spacing[12]} 0;
   position: relative;
   overflow: hidden;
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    padding: ${theme.spacing[20]} 0;
+  }
   
   &::before {
     content: '';
     position: absolute;
-    width: 306px;
-    height: 306px;
-    right: -153px;
+    width: 200px;
+    height: 200px;
+    right: -100px;
     top: 50%;
     transform: translateY(-50%);
     background: #C6181B;
-    filter: blur(250px);
+    filter: blur(150px);
+    opacity: 0.3;
+    
+    @media (min-width: ${theme.breakpoints.md}) {
+      width: 306px;
+      height: 306px;
+      right: -153px;
+      filter: blur(250px);
+      opacity: 1;
+    }
   }
 `;
 
@@ -145,7 +158,11 @@ const ErrorMessage = styled.div`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 ${theme.spacing[4]};
+  padding: 0 ${theme.spacing[3]};
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    padding: 0 ${theme.spacing[4]};
+  }
   
   @media (min-width: ${theme.breakpoints.md}) {
     padding: 0 ${theme.spacing[8]};
@@ -164,50 +181,88 @@ const SectionTag = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: ${theme.typography.fontSize['4xl']};
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: ${theme.typography.fontWeight.bold};
   color: ${theme.colors.text.primary};
   margin-bottom: ${theme.spacing[4]};
+  text-align: center;
   
   @media (min-width: ${theme.breakpoints.md}) {
     font-size: ${theme.typography.fontSize['5xl']};
+    text-align: left;
   }
 `;
 
 const SectionDescription = styled.p`
-  font-size: ${theme.typography.fontSize.lg};
+  font-size: ${theme.typography.fontSize.base};
   color: #888888;
-  margin-bottom: ${theme.spacing[12]};
+  margin-bottom: ${theme.spacing[8]};
   max-width: 600px;
-  line-height: 1.6;
-  align-self: center;
+  line-height: 1.4;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize.lg};
+    line-height: 1.6;
+    margin-bottom: ${theme.spacing[12]};
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const PricingGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  gap: ${theme.spacing[8]};
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${theme.spacing[2]};
+  overflow-x: auto;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    gap: ${theme.spacing[3]};
+  }
   
   @media (min-width: ${theme.breakpoints.md}) {
-    grid-template-columns: repeat(3, 1fr);
+    gap: ${theme.spacing[8]};
   }
 `;
 
 const PricingCard = styled.div<{ isHighlighted?: boolean }>`
   background: #000000;
   border: 1px solid #515151;
-  border-radius: ${theme.borderRadius['3xl']};
-  padding: ${theme.spacing[10]};
+  border-radius: ${theme.borderRadius.lg};
+  padding: ${theme.spacing[3]};
   text-align: left;
   transition: all ${theme.transitions.base};
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 180px;
+  min-width: 200px;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    border-radius: ${theme.borderRadius['2xl']};
+    padding: ${theme.spacing[4]};
+    min-height: 200px;
+    min-width: 220px;
+  }
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    border-radius: ${theme.borderRadius['3xl']};
+    padding: ${theme.spacing[10]};
+    min-height: 240px;
+    min-width: auto;
+  }
   
   &:hover {
     border-color: #ff0000;
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    
+    @media (min-width: ${theme.breakpoints.md}) {
+      transform: translateY(-4px);
+    }
   }
 `;
 
@@ -219,49 +274,99 @@ const PriceRow = styled.div`
 `;
 
 const Price = styled.div`
-  font-size: ${theme.typography.fontSize['4xl']};
+  font-size: ${theme.typography.fontSize['2xl']};
   font-weight: ${theme.typography.fontWeight.black};
   color: #ff0000;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    font-size: ${theme.typography.fontSize['3xl']};
+  }
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize['4xl']};
+  }
 `;
 
 const Discount = styled.div`
-  font-size: ${theme.typography.fontSize.base};
+  font-size: ${theme.typography.fontSize.sm};
   color: ${theme.colors.white};
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize.base};
+  }
 `;
 
 const PackageTitle = styled.h3`
-  font-size: ${theme.typography.fontSize['xl']};
+  font-size: ${theme.typography.fontSize.sm};
   font-weight: ${theme.typography.fontWeight.bold};
   color: ${theme.colors.white};
-  margin-bottom: ${theme.spacing[4]};
-  min-height: 2.5rem;
+  margin-bottom: ${theme.spacing[2]};
+  min-height: 1.5rem;
   display: flex;
   align-items: center;
+  line-height: 1.2;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    font-size: ${theme.typography.fontSize.base};
+    margin-bottom: ${theme.spacing[3]};
+    min-height: 2rem;
+  }
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize['xl']};
+    margin-bottom: ${theme.spacing[4]};
+    min-height: 2.5rem;
+  }
 `;
 
 const PackageFeatures = styled.p`
-  font-size: ${theme.typography.fontSize.base};
+  font-size: ${theme.typography.fontSize.xs};
   color: ${theme.colors.white};
-  line-height: 1.6;
-  margin-bottom: ${theme.spacing[8]};
+  line-height: 1.3;
+  margin-bottom: ${theme.spacing[4]};
   flex-grow: 1;
-  min-height: 3rem;
+  min-height: 2rem;
   display: flex;
   align-items: flex-start;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    font-size: ${theme.typography.fontSize.sm};
+    line-height: 1.4;
+    margin-bottom: ${theme.spacing[6]};
+    min-height: 2.5rem;
+  }
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize.base};
+    line-height: 1.6;
+    margin-bottom: ${theme.spacing[8]};
+    min-height: 3rem;
+  }
 `;
 
 const PreorderButton = styled.button<{ isHighlighted?: boolean }>`
   background: ${props => props.isHighlighted ? '#ff0000' : 'transparent'};
   color: ${theme.colors.white};
   border: 1px solid #ff0000;
-  padding: ${theme.spacing[4]} ${theme.spacing[6]};
-  font-size: ${theme.typography.fontSize.lg};
+  padding: ${theme.spacing[2]} ${theme.spacing[3]};
+  font-size: ${theme.typography.fontSize.sm};
   font-weight: ${theme.typography.fontWeight.bold};
-  border-radius: ${theme.borderRadius.lg};
+  border-radius: ${theme.borderRadius.md};
   cursor: pointer;
   transition: all ${theme.transitions.base};
   margin-top: auto;
   width: 100%;
+  
+  @media (min-width: ${theme.spacing[4]}) {
+    padding: ${theme.spacing[3]} ${theme.spacing[4]};
+    font-size: ${theme.typography.fontSize.base};
+    border-radius: ${theme.borderRadius.lg};
+  }
+  
+  @media (min-width: ${theme.breakpoints.md}) {
+    padding: ${theme.spacing[4]} ${theme.spacing[6]};
+    font-size: ${theme.typography.fontSize.lg};
+  }
   
   &:hover {
     background: #ff0000;

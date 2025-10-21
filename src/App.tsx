@@ -5,6 +5,7 @@ import { GlobalStyles } from './styles/GlobalStyles';
 import Hero from './components/Hero';
 import Header from './components/Header';
 import HowItWorks from './components/HowItWorks';
+import AppExperience from './components/AppExperience';
 import KeyFeatures from './components/KeyFeatures';
 import Preorder from './components/Preorder';
 import Footer from './components/Footer';
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <Hero />
       <HowItWorks />
+      <AppExperience />
       <KeyFeatures />
       <Preorder />
       <Footer />

@@ -7,7 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://shadowgear-website.vercel.app',
+    'https://shadowgear-website-git-main-majedzamzami1.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Create transporter for Gmail

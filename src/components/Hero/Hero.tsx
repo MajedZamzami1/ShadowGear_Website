@@ -177,8 +177,8 @@ const Hero: React.FC = () => {
           Gear
         </HeroTitle>
         <HeroSubtitle>
-          Precision Lights, Powerful<br />
-          Sensors, Smarter You
+        Be the Main Character of Your <br />
+        Fitness Journey
         </HeroSubtitle>
         <CTAButton onClick={() => document.getElementById('preorder')?.scrollIntoView({ behavior: 'smooth' })}>
           Pre order Now
