@@ -78,6 +78,7 @@ const PunchingBag = styled.div`
 `;
 
 const HeroTitle = styled.h1`
+  font-family: 'League Spartan', sans-serif;
   font-size: clamp(4rem, 15vw, 12rem);
   font-weight: ${theme.typography.fontWeight.black};
   color: #FFEFEF;
@@ -91,6 +92,7 @@ const HeroTitle = styled.h1`
 `;
 
 const HeroSubtitle = styled.p`
+  font-family: 'League Spartan', sans-serif;
   font-size: ${theme.typography.fontSize['2xl']};
   font-weight: ${theme.typography.fontWeight.bold};
   color: ${theme.colors.white};
@@ -109,6 +111,7 @@ const HeroSubtitle = styled.p`
 `;
 
 const CTAButton = styled.button`
+  font-family: 'League Spartan', sans-serif;
   background: linear-gradient(135deg, #ff0000 0%, #ff3333 100%);
   color: ${theme.colors.white};
   border: none;
@@ -134,6 +137,7 @@ const CTAButton = styled.button`
 `;
 
 const ScrollIndicator = styled.div`
+  font-family: 'League Spartan', sans-serif;
   position: absolute;
   bottom: ${theme.spacing[8]};
   left: 50%;
@@ -173,8 +177,8 @@ const Hero: React.FC = () => {
       </PunchingBag>
       <HeroContent>
         <HeroTitle>
-          Shadow<br />
-          Gear
+          SHADOW<br />
+          GEAR
         </HeroTitle>
         <HeroSubtitle>
         Be the Main Character of Your <br />
